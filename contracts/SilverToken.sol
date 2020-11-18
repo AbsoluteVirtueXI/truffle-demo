@@ -10,7 +10,7 @@ contract SilverToken is ERC20Capped, ERC20Burnable, Ownable {
         address owner_,
         uint256 initialSupply,
         uint256 cap_
-    ) public ERC20("Silver", "SLV") ERC20Capped(cap_) {
+    ) public ERC20("SilverToken", "SLV") ERC20Capped(cap_) {
         transferOwnership(owner_);
         _mint(owner(), initialSupply);
     }
