@@ -25,6 +25,13 @@ describe('GameLoot', function () {
   it('has owner', async function () {
     expect(await this.gameloot.owner()).to.equal(owner);
   });
+  it('reverts if loot() not called by owner', async function () {
+    await expectRevert(this.gameloot.loot(user1, loot1, { from: dev }), 'Ownable: caller is not the owner');
+  });
+  it('increments tokenId by calling loot()', async function () {
+    await this.gameloot.loot(user1, loot1, { from: owner });
+    await this.gameloot.loot(user2, loot2, { from: owner });
+  });
   it('mints NFT to user by calling loot()', async function () {
     await this.gameloot.loot(user1, loot1, { from: owner });
     await this.gameloot.loot(user2, loot2, { from: owner });
@@ -41,8 +48,5 @@ describe('GameLoot', function () {
       expect(await this.gameloot.ownerOf(ids[i])).to.equal(user1);
     }
     expect(await this.gameloot.ownerOf(2)).to.equal(user2);
-  });
-  it('reverts if loot() not called by owner', async function () {
-    await expectRevert(this.gameloot.loot(user1, loot1, { from: dev }), 'Ownable: caller is not the owner');
   });
 });
