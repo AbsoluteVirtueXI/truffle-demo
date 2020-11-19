@@ -22,8 +22,6 @@ contract GameLoot is ERC721, Ownable {
 
     mapping(uint256 => Loot) private _loots;
 
-    // 0 = weapong, 1 = armure
-
     constructor(address owner) public ERC721("GameLoot", "LOOT") {
         transferOwnership(owner);
     }
@@ -39,16 +37,4 @@ contract GameLoot is ERC721, Ownable {
     function getLootById(uint256 tokenId) public view returns (Loot memory) {
         return _loots[tokenId];
     }
-
-    /*
-    function awardItem(address player, string memory tokenURI) public returns (uint256) {
-        _tokenIds.increment();
-
-        uint256 newItemId = _tokenIds.current();
-        _mint(player, newItemId);
-        _setTokenURI(newItemId, tokenURI);
-
-        return newItemId;
-    }
-    */
 }
