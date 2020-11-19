@@ -35,6 +35,7 @@ contract GameLoot is ERC721, Ownable {
     }
 
     function getLootById(uint256 tokenId) public view returns (Loot memory) {
+        require(_exists(tokenId), "GameLoot: Loot query for nonexistent token");
         return _loots[tokenId];
     }
 }
