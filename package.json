@@ -5,7 +5,7 @@
   "author": "AbsoluteVirtueXI <absolutevirtuexi@gmail.com>",
   "license": "MIT",
   "scripts": {
-   "test": "mocha --exit --recursive"
+   "test": "npx truffle compile && mocha --exit --recursive"
   },
   "devDependencies": {
     "@openzeppelin/test-environment": "^0.1.6",
